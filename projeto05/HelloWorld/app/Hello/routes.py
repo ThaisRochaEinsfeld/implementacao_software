@@ -11,3 +11,8 @@ def index():
 
 def about():
     return "Meu nome é Thais"
+
+@hello_bp.route('/teste')
+
+def test():
+    return "Nova rota teste"
