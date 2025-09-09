@@ -6,10 +6,24 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Criar Usuário</h1>
+    <form action="/novoUsuario" method="POST">
+        <label for="nome">Nome Usuário</label>
+        <input type="text" id="nome" name="nome_usuario" required>
+        <button type="submit">Cadastrar Usuário</button>
+    </form>
     <h1>Usuarios</h1>
     <ul>
         {% for usuario in usuarios %}
-            <li>{{usuario.username}}</li>
+            <li>
+                <form action="{{url_for('hello.editarUsuario', usuario_id=usuario.id)}}" method="POST">
+                    <input type="text" name="nome_usuario" value="{{usuario.username}}" required>
+                    <button type="submit">Atualizar Nome Usuário</button>
+                </form>
+                <form action="{{url_for('hello.removerUsuario', usuario_id=usuario.id)}}" method="POST">
+                    <button type="submit">Remover Usuário</button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
 </body>
